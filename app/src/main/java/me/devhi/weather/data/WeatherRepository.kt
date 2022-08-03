@@ -18,7 +18,7 @@ class WeatherRepository(
         return if (forceReset) {
             getRemoteWeatherAndCache(latitude, longitude)
         } else {
-            localDataSource.getWeather(latitude, longitude, getToday())
+            localDataSource.getWeather((latitude * 10) / 10, (longitude * 10) / 10, getToday())
                 ?: getRemoteWeatherAndCache(latitude, longitude)
         }
     }
@@ -28,7 +28,11 @@ class WeatherRepository(
         longitude: Double
     ): WeatherResponse {
         val result = remoteDateSource.getWeatherInfo(latitude, longitude)
-        localDataSource.insertWeather(result.apply { this.date = getToday() })
+        localDataSource.insertWeather(result.apply {
+            this.lat = (latitude * 10) / 10
+            this.lon = (longitude * 10) / 10
+            this.date = getToday()
+        })
         return result
     }
 

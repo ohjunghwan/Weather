@@ -4,8 +4,8 @@ import androidx.room.Entity
 
 @Entity(tableName = "weather", primaryKeys = ["lat", "lon", "date"])
 data class WeatherResponse(
-    val lat: Double = 0.0,
-    val lon: Double = 0.0,
+    var lat: Double = 0.0,
+    var lon: Double = 0.0,
     val timezone: String = "",
     val current: HourlyWeatherDTO = HourlyWeatherDTO(),
     val hourly: List<HourlyWeatherDTO> = listOf(),
