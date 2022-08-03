@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="me.devhi.weather.view.HourlyForecastUiState" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:background="@color/black">
+
+
+        <TextView
+            android:id="@+id/time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@{item.time}"
+            android:textColor="#AAAAAA"
+            android:textSize="12sp"
+            tools:text="오전 11시" />
+
+
+        <TextView
+            android:id="@+id/max_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.temperature}"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            tools:text="20C" />
+
+
+        <ImageView
+            android:id="@+id/weather_thumbnail"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:image_url="@{item.iconUrl}" />
+
+    </LinearLayout>
+
+</layout>
